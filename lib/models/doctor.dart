@@ -6,6 +6,7 @@ class DoctorModel {
   Color imageBox;
   List<String> specialties;
   List<CalendarModel> calendar;
+  List<TimeModel> time;
   String bio;
   double score;
 
@@ -17,6 +18,7 @@ class DoctorModel {
     required this.score,
     required this.bio,
     required this.calendar,
+    required this.time,
   });
 
   static List<DoctorModel> getDoctors() {
@@ -39,7 +41,14 @@ class DoctorModel {
             CalendarModel(dayNumber: 15, dayName: 'Mon', isSelected: false),
             CalendarModel(dayNumber: 16, dayName: 'Tue', isSelected: true),
             CalendarModel(dayNumber: 17, dayName: 'Wed', isSelected: false),
-          ]));
+          ],
+          time: [
+            TimeModel(time: "09.00 AM", isSelected: true),
+            TimeModel(time: "09.00 AM", isSelected: false),
+            TimeModel(time: "09.00 AM", isSelected: false),
+            TimeModel(time: "09.00 AM", isSelected: false),
+          ]
+          ));
       doctors.add(DoctorModel(
           name: 'Dr. Kristin Watson',
           image: 'assets/images/Doctor1.png',
@@ -57,7 +66,15 @@ class DoctorModel {
             CalendarModel(dayNumber: 15, dayName: 'Mon', isSelected: false),
             CalendarModel(dayNumber: 16, dayName: 'Tue', isSelected: true),
             CalendarModel(dayNumber: 17, dayName: 'Wed', isSelected: false),
-          ]));
+          ],
+             time: [
+            TimeModel(time: "09.00 AM", isSelected: true),
+            TimeModel(time: "09.00 AM", isSelected: false),
+            TimeModel(time: "09.00 AM", isSelected: false),
+            TimeModel(time: "09.00 AM", isSelected: false),
+          ]
+          
+          ));
       return doctors;
     }
   }
@@ -72,4 +89,11 @@ class CalendarModel {
       {required this.dayNumber,
       required this.dayName,
       required this.isSelected});
+}
+
+class TimeModel {
+  final String time;
+  bool isSelected;
+
+  TimeModel({required this.time, required this.isSelected});
 }

@@ -1,3 +1,4 @@
+import 'package:app_1/pages/BottomNavBar.dart';
 import 'package:app_1/pages/home.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,6 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
             fontFamily: 'Poppins'),
-        home: const HomePage());
+        home: const BottomNavBar());
   }
 }

@@ -12,11 +12,13 @@ class DetailPage extends StatefulWidget {
 
 class _DetailPageState extends State<DetailPage> {
   List<CalendarModel> calendarData = [];
+  List<TimeModel> timeData = [];
 
   @override
   void initState() {
     super.initState();
     calendarData = widget.doctorModel.calendar;
+    timeData = widget.doctorModel.time;
   }
 
   @override
@@ -59,7 +61,11 @@ class _DetailPageState extends State<DetailPage> {
               const SizedBox(
                 height: 30,
               ),
-              calendar()
+              calendar(),
+              const SizedBox(
+                height: 30,
+              ),
+              time(),
             ],
           ),
         ));
@@ -249,6 +255,75 @@ class _DetailPageState extends State<DetailPage> {
                   ),
               itemCount: calendarData.length),
         )
+      ],
+    );
+  }
+
+  Widget time() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Text(
+          'Time',
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+        ),
+        const SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          height: 50,
+          child: ListView.separated(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return GestureDetector(
+                onTap: () {
+                  for (var item in timeData) {
+                    item.isSelected = false;
+                  }
+                  timeData[index].isSelected = true;
+                  setState(() {});
+                },
+                child: Container(
+                  height: 30,
+                  width: 80,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.rectangle,
+                    borderRadius: BorderRadius.circular(30),
+                    color: timeData[index].isSelected
+                        ? const Color(0xff51A8FF)
+                        : Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        offset: const Offset(0, 4),
+                        blurRadius: 25,
+                        color: timeData[index].isSelected
+                            ? const Color(0xff51A8FF).withOpacity(0.45)
+                            : const Color(0xff050618).withOpacity(0.05),
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    // Wrap the Text widget with Center
+                    child: Text(
+                      timeData[index].time.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: timeData[index].isSelected
+                            ? Colors.white
+                            : Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (context, index) => const SizedBox(
+              width: 30,
+            ),
+            itemCount: timeData.length,
+          ),
+        ),
       ],
     );
   }
