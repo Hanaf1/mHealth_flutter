@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'home.dart'; // Import your pages
+import 'home.dart';
+import 'profile.dart'; // Import your pages
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({super.key});
@@ -14,6 +15,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
   // List of pages corresponding to each tab
   final List<Widget> _pages = [
     const HomePage(),
+    const HomePage(),
+    const HomePage(),
+    const ProfilePage(),
+    // Add other pages here
   ];
 
   void _onItemTapped(int index) {
@@ -25,25 +30,35 @@ class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: _pages[_selectedIndex], // Display the selected page
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // Ensure the icons stay centered
+        backgroundColor: Colors.white, // Set background color to white
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Home',
+            label: '', // Remove the label
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.details),
-            label: 'Details',
+            icon: Icon(Icons.calendar_today),
+            label: '', // Remove the label
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.message),
+            label: '', // Remove the label
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: 'Profile',
+            label: '', // Remove the label
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.blue, // Highlight selected icon in blue
+        unselectedItemColor: Colors.grey, // Set color for unselected icons
         onTap: _onItemTapped,
+        showSelectedLabels: false, // Hide labels
+        showUnselectedLabels: false, // Hide labels
       ),
     );
   }

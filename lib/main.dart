@@ -1,5 +1,4 @@
 import 'package:app_1/pages/BottomNavBar.dart';
-import 'package:app_1/pages/home.dart';
 import 'package:flutter/material.dart';
 
 void main() {

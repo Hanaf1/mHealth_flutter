@@ -198,63 +198,65 @@ class _DetailPageState extends State<DetailPage> {
         ),
         SizedBox(
           height: 50,
-          child: ListView.separated(
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return GestureDetector(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: calendarData.map((data) {
+              return Expanded(
+                child: GestureDetector(
                   onTap: () {
-                    for (var item in calendarData) {
-                      item.isSelected = false;
-                    }
-                    calendarData[index].isSelected = true;
-                    setState(() {});
+                    setState(() {
+                      for (var item in calendarData) {
+                        item.isSelected = false;
+                      }
+                      data.isSelected = true;
+                    });
                   },
                   child: Container(
                     height: 50,
-                    width: 50,
                     decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: calendarData[index].isSelected
-                            ? const Color(0xff51A8FF)
-                            : Colors.white,
-                        boxShadow: [
-                          BoxShadow(
-                              offset: const Offset(0, 4),
-                              blurRadius: 25,
-                              color: calendarData[index].isSelected
-                                  ? const Color(0xff51A8FF).withOpacity(0.45)
-                                  : const Color(0xff050618).withOpacity(0.05))
-                        ]),
+                      shape: BoxShape.circle,
+                      color: data.isSelected
+                          ? const Color(0xff51A8FF)
+                          : Colors.white,
+                      boxShadow: [
+                        BoxShadow(
+                          offset: const Offset(0, 4),
+                          blurRadius: 25,
+                          color: data.isSelected
+                              ? const Color(0xff51A8FF).withOpacity(0.45)
+                              : const Color(0xff050618).withOpacity(0.05),
+                        ),
+                      ],
+                    ),
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          calendarData[index].dayNumber.toString(),
+                          data.dayNumber.toString(),
                           style: TextStyle(
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12,
-                              color: calendarData[index].isSelected
-                                  ? Colors.white
-                                  : Colors.black),
+                            fontWeight: FontWeight.w400,
+                            fontSize: 12,
+                            color:
+                                data.isSelected ? Colors.white : Colors.black,
+                          ),
                         ),
                         Text(
-                          calendarData[index].dayName.toString(),
+                          data.dayName.toString(),
                           style: TextStyle(
-                              fontWeight: FontWeight.w200,
-                              fontSize: 12,
-                              color: calendarData[index].isSelected
-                                  ? Colors.white
-                                  : Colors.black),
-                        )
+                            fontWeight: FontWeight.w200,
+                            fontSize: 12,
+                            color:
+                                data.isSelected ? Colors.white : Colors.black,
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                );
-              },
-              separatorBuilder: (context, index) => const SizedBox(
-                    width: 30,
-                  ),
-              itemCount: calendarData.length),
-        )
+                ),
+              );
+            }).toList(),
+          ),
+        ),
       ],
     );
   }
