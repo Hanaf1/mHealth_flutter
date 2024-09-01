@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "663325342712",
+    "project_id": "mhealth-55529",
+    "storage_bucket": "mhealth-55529.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:663325342712:android:4b130d9fc17265b2f6340d",
+        "android_client_info": {
+          "package_name": "com.hanafi.mhealth"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuIbY1_enJKYUEw3Ql4nMulxZo231wOks"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

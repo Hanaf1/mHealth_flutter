@@ -1,7 +1,16 @@
-import 'package:app_1/pages/BottomNavBar.dart';
+// import 'package:app_1/pages/BottomNavBar.dart';
+import 'package:app_1/pages/login/login.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform
+  );
+
   runApp(const MyApp());
 }
 
@@ -18,6 +27,6 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
             fontFamily: 'Poppins'),
-        home: const BottomNavBar());
+        home: Login());
   }
 }

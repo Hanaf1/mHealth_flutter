@@ -4,19 +4,32 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.4.4 <4.0.0'
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
+  # add this line to your dependencies
+  fluttertoast: ^8.2.8
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.10+1
   intl: ^0.19.0
+  flutter_launcher_icons: ^0.13.1
+  google_fonts: 5.1.0
+  rename: ^2.1.1
+  firebase_core: ^2.24.2
+  firebase_auth: ^4.16.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^3.0.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  image_path: "assets/images/health.png"
+  min_sdk_android: 21
+
 
 flutter:
   uses-material-design: true
